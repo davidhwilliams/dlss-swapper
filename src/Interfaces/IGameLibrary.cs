@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DLSS_Swapper.Data.EA;
 
 namespace DLSS_Swapper.Interfaces
 {
@@ -22,7 +23,8 @@ namespace DLSS_Swapper.Interfaces
         EpicGamesStore = 4,
         UbisoftConnect = 8,
         XboxApp = 16,
-        //SelfManaged = 32,
+        EA = 32,
+        //SelfManaged = 64,
     };
 
     public interface IGameLibrary
@@ -44,6 +46,7 @@ namespace DLSS_Swapper.Interfaces
                 GameLibrary.EpicGamesStore => new EpicGamesStoreLibrary(),
                 GameLibrary.UbisoftConnect => new UbisoftConnectLibrary(),
                 GameLibrary.XboxApp => new XboxLibrary(),
+                GameLibrary.EA => new EALibrary(),
                 _ => throw new Exception($"Could not load game library {gameLibrary}"),
             };
         }
